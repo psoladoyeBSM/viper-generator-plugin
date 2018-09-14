@@ -1,0 +1,17 @@
+#if (${PACKAGE_NAME} && ${PACKAGE_NAME} != "")package ${PACKAGE_NAME}
+
+#end
+
+import java.lang.ref.WeakReference
+
+/**
+ * ${NAME}
+ * ${PROJECT_NAME}
+ *
+ * Created by ${USER} on ${DATE}.
+ * Copyright © ${YEAR} ${COMPANY}. All rights reserved.
+ */
+ 
+#parse("File Header.java")
+class ${NAME} : ${MODULE_NAME}.Router {
+}

@@ -1,0 +1,31 @@
+<idea-plugin>
+    <id>com.bsmtechnologies.viper-generator</id>
+    <name>Viper Generator Plugin</name>
+    <vendor email="paul.soladoye@bsmtechnologies.com" url="http://www.yourcompany.com">BSM Technologies</vendor>
+
+    <description><![CDATA[
+    Enter short description for your plugin here.<br>
+    <em>most HTML tags may be used</em>
+    ]]></description>
+
+    <!-- please see http://www.jetbrains.org/intellij/sdk/docs/basics/getting_started/plugin_compatibility.html
+         on how to target different products -->
+    <!-- uncomment to enable plugin in all products
+    <depends>com.intellij.modules.lang</depends>
+    -->
+    <depends>com.intellij.modules.lang</depends>
+    <depends>org.jetbrains.kotlin</depends>
+    <depends>org.jetbrains.android</depends>
+
+    <extensions defaultExtensionNs="com.intellij">
+        <!-- Add your extensions here -->
+    </extensions>
+
+    <actions>
+        <!-- Add your actions here -->
+        <action id="viper-code-generator.ModuleGenerator" class="generator.ViperCodeGenerator"
+                text="Generate Viper Module" description="Generates a kotlin module based on viper architecture">
+            <add-to-group group-id="NewGroup" anchor="after" relative-to-action="Kotlin.NewFile"/>
+        </action>
+    </actions>
+</idea-plugin>

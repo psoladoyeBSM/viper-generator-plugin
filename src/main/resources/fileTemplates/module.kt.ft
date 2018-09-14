@@ -1,0 +1,53 @@
+#if (${PACKAGE_NAME} && ${PACKAGE_NAME} != "")package ${PACKAGE_NAME}
+
+#end
+
+import dagger.Module
+import dagger.Provides
+import java.lang.ref.WeakReference
+
+/**
+ * ${NAME}
+ * ${PROJECT_NAME}
+ *
+ * Created by ${USER} on ${DATE}.
+ * Copyright © ${YEAR} ${COMPANY}. All rights reserved.
+ */
+
+#parse("File Header.java")
+@Module
+class ${NAME} {
+
+    @Provides
+    @ActivityScope
+    fun provideView(activity: ${MODULE_NAME}Activity): ${MODULE_NAME}.View = activity
+
+    @Provides
+    @ActivityScope
+    fun provideInteractor(): ${MODULE_NAME}.Interactor = ${MODULE_NAME}Interactor()
+
+    @Provides
+    @ActivityScope
+    fun provideRouter(): ${MODULE_NAME}.Router = ${MODULE_NAME}ActivityRouter()
+
+    @Provides
+    @ActivityScope
+    fun providePresenter(
+        view: ${MODULE_NAME}.View,
+        interactor: ${MODULE_NAME}.Interactor,
+        router: ${MODULE_NAME}.Router
+    ): ${MODULE_NAME}.Presenter {
+        val presenter = ${MODULE_NAME}Presenter(interactor, router)
+        interactor.delegate = WeakReference(presenter)
+        presenter.view = WeakReference(view)
+        return presenter
+    }
+
+    @Provides
+    @ActivityScope
+    fun provideViewDelegate(
+        view: ${MODULE_NAME}.View,
+        interactor: ${MODULE_NAME}.Interactor,
+        router: ${MODULE_NAME}.Router
+    ): ${MODULE_NAME}.View.Delegate = providePresenter(view, interactor, router)
+}

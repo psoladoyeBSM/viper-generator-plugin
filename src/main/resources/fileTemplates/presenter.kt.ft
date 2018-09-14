@@ -1,0 +1,26 @@
+#if (${PACKAGE_NAME} && ${PACKAGE_NAME} != "")package ${PACKAGE_NAME}
+
+#end
+
+import java.lang.ref.WeakReference
+
+/**
+ * ${NAME}
+ * ${PROJECT_NAME}
+ *
+ * Created by ${USER} on ${DATE}.
+ * Copyright © ${YEAR} ${COMPANY}. All rights reserved.
+ */
+
+#parse("File Header.java")
+class ${NAME} (
+    private val interactor: ${MODULE_NAME}.Interactor,
+    private val router: ${MODULE_NAME}.Router
+) : ${MODULE_NAME}.Presenter {
+    
+    var view: WeakReference<${MODULE_NAME}.View>? = null
+    
+    override fun viewDidLoad() {
+    
+    }
+}
