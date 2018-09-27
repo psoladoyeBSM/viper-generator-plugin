@@ -17,7 +17,7 @@ import javax.inject.Inject
 
 #parse("File Header.java")
 class ${NAME} : Activity<${NAME}.State>(), ${MODULE_NAME}.View  {
-    override var state: State = State(null)
+    override var state: State = State()
 
     @Inject
     lateinit var delegate: ${MODULE_NAME}.View.Delegate
@@ -28,11 +28,10 @@ class ${NAME} : Activity<${NAME}.State>(), ${MODULE_NAME}.View  {
         delegate.viewDidLoad()
     }
 
-    data class State(val name: String?) : Parcelable {
-        constructor(parcel: Parcel) : this(parcel.readString())
+    class State() : Parcelable {
+        constructor(parcel: Parcel) : this()
 
-        override fun writeToParcel(parcel: Parcel, flags: Int) {
-        }
+        override fun writeToParcel(parcel: Parcel, flags: Int) {}
 
         override fun describeContents(): Int {
             return 0
@@ -47,6 +46,5 @@ class ${NAME} : Activity<${NAME}.State>(), ${MODULE_NAME}.View  {
                 return arrayOfNulls(size)
             }
         }
-
     }
 }

@@ -20,7 +20,5 @@ class ${NAME} (
     
     var view: WeakReference<${MODULE_NAME}.View>? = null
     
-    override fun viewDidLoad() {
-    
-    }
+    override fun viewDidLoad() {}
 }
